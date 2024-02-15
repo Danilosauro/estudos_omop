@@ -1,0 +1,78 @@
+library(DatabaseConnector)
+library(Eunomia)
+
+## instancia do banco de dados eunomia
+
+connectionDetails <- getEunomiaConnectionDetails() 
+
+## abertura de conexão com o banco de dados
+
+connection <- connect(connectionDetails) 
+
+## consulta 
+
+querySql(connection, "SELECT * FROM person;") 
+querySql(connection, "SELECT DISTINCT RACE_SOURCE_VALUE FROM person;")
+querySql(connection, "SELECT DISTINCT GENDER_CONCEPT_ID FROM person;")
+querySql(connection, "SELECT DISTINCT RACE_CONCEPT_ID FROM person") 
+querySql(connection, "SELECT DISTINCT ETHNICITY_CONCEPT_ID FROM person")
+querySql(connection, "SELECT DISTINCT GENDER_SOURCE_VALUE FROM person")
+querySql(connection, "SELECT DISTINCT RACE_SOURCE_VALUE FROM person") 
+querySql(connection, "SELECT DISTINCT ETHNICITY_SOURCE_VALUE FROM person")
+
+
+
+tabelas <- getTableNames(connection,databaseSchema = 'main')
+
+## 37 tabelas de acordo com o exemplo disponibilizado pelo livro da ohdsi omop
+
+length(tabelas)
+
+
+## criação de tabela para dados socioenomicos
+
+create_table_sql <- "
+CREATE TABLE SOCIOECONOMIC_PROGRAM (
+    SOCIOECONOMIC_PROGRAM_ID INTEGER PRIMARY KEY, 
+    SOCIOECONOMIC_PROGRAM_NAME VARCHAR(50), 
+    SOCIOECONOMIC_PROGRAM_EXPOSURE_START_DATE DATE, 
+    SOCIOECONOMIC_PROGRAM_STATUS VARCHAR(50), 
+    SOCIOECONOMIC_PROGRAM_EXPOSURE_END_DATE DATE, 
+    SOCIOECONOMIC_PROGRAM_CLASS VARCHAR(50), 
+    PERSON_ID INTEGER,
+    FOREIGN KEY (PERSON_ID) REFERENCES person(PERSON_ID)
+);
+"
+## alterar para adicionar um atributo numa tabela existente
+
+executeSql(connection, "ALTER TABLE person ADD COLUMN TESTE VARCHAR(50)")
+
+
+## executa ato de criação da nova tabela
+
+executeSql(connection, create_table_sql) 
+## deleção de tabelas
+
+executeSql(connection, 'DROP TABLE IF EXISTS SOCIOECONOMIC_PROGRAM')
+
+
+## fechamento de conexão com o banco de dados 
+
+
+## exercises book of ohdsi omop 
+
+# Exercise 9.1 Using SQL and R, compute how many people are in the database.
+
+querySql(connection, 'SELECT COUNT(*) FROM PERSON')
+
+# Exercise 9.2 Using SQL and R, compute how many people have at least one prescription of celecoxib.
+
+# Exercise 9.3 Using SQL and R, compute how many diagnoses of gastrointestinal hemorrhage occur during exposure to celecoxib. (Hint: the concept ID for gastrointestinal hemorrhage is 192671.)
+
+disconnect(connection) 
+
+tabelas
+
+
+
+

@@ -1,0 +1,35 @@
+Thread: Main
+Message:  objeto 'connDetails' não encontrado
+Level:  FATAL
+Time:  2024-02-07 15:44:33
+
+Stack trace:
+5: h(simpleError(msg, call))
+4: .handleSimpleError(function (condition) 
+
+3: connectionDetails$dbms %in% c("bigquery"
+2: .supportsTempTables(connectionDetails)
+1: achilles(connDetails, cdmDatabaseSchema 
+
+R version:
+R version 4.3.2 (2023-10-31 ucrt)
+
+Platform:
+x86_64-w64-mingw32
+
+Attached base packages:
+- stats
+- graphics
+- grDevices
+- utils
+- datasets
+- methods
+- base
+
+Other attached packages:
+- Eunomia (1.0.0)
+- Achilles (1.7.2)
+- DatabaseConnector (6.3.2)
+- RSQLite (2.3.4)
+
+

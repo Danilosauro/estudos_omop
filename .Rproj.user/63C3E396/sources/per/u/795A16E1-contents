@@ -1,0 +1,24 @@
+install.packages(c("SqlRender", "DatabaseConnector", "remotes"))
+remotes::install_github("ohdsi/Achilles")
+remotes::install_github("ohdsi/DataQualityDashboard")
+remotes::install_github("ohdsi/Eunomia", ref = "v1.0.0") 
+
+
+library(Achilles) 
+
+createCohorts(connectionDetails, 
+              cdmDatabaseSchema =  "main", 
+              cohortDatabaseSchema = "main", 
+              cohortTable = 'cohort') 
+
+
+result <- achilles(connectionDetails, cdmDatabaseSchema = "main", 
+         resultsDatabaseSchema = "main", 
+         sourceName = "My database", 
+         cdmVersion = "5.3.0") 
+
+DataQualityDashboard::executeDqChecks(connectionDetails = connectionDetails, 
+                                      cdmDatabaseSchema = "main", 
+                                      resultsDatabaseSchema = "main", 
+                                      cdmSourceName = "my database", 
+                                      outputFolder = "my output")

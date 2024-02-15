@@ -1,0 +1,29 @@
+DBMS:
+sqlite
+
+Error:
+no such index: idx_ar_aid
+
+SQL:
+DROP INDEX idx_ar_aid
+
+R version:
+R version 4.3.2 (2023-10-31 ucrt)
+
+Platform:
+x86_64-w64-mingw32
+
+Attached base packages:
+- stats
+- graphics
+- grDevices
+- utils
+- datasets
+- methods
+- base
+
+Other attached packages:
+- Eunomia (1.0.0)
+- Achilles (1.7.2)
+- DatabaseConnector (6.3.2)
+- RSQLite (2.3.4)
