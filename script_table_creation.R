@@ -8,7 +8,6 @@ library(stringr)
 
 
 # estabelecimento das conexões 
-
 connectionDetails <- getEunomiaConnectionDetails()
 connection <- connect(connectionDetails) 
 
@@ -94,6 +93,8 @@ PRIMARY KEY (INFANT_ID)
 )
 " 
 
+executeSql(connection, create_table_infant_sql) 
+
 inserting_data <- " 
 INSERT INTO INFANT_TABLE VALUES(
 1,1,'2014/05/01',1,1,1,1,1
@@ -101,16 +102,15 @@ INSERT INTO INFANT_TABLE VALUES(
 
 "
 
-executeSql(connection, create_table_infant_sql) 
-
-
 executeSql(connection, inserting_data)
 
 
 # Verificar se a tabela foi criada e os dados falsos inseridos regularmente 
 
 infant_table <- querySql(connection, 'SELECT * FROM INFANT_TABLE') 
+
 infant_table
+
 pregnancy_table <- querySql(connection, 'SELECT * FROM PREGNANCY_TABLE') 
 
 # salvar o csv após inserção
@@ -131,4 +131,6 @@ disconnect(connection)
 closeAllConnections()
 
 ?Eunomia
-?DatabaseConnector
+?DatabaseConnector 
+
+
