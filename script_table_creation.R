@@ -1,9 +1,7 @@
 # instalação de bibliotecas 
 
 library(DatabaseConnector)
-library(Achilles)
 library(Eunomia)
-library(DataQualityDashboard) 
 library(stringr)
 
 
@@ -30,7 +28,6 @@ for (i in tabelas){
   
   write.csv(table_to_save, str_interp(saving, list(table=i)), row.names=FALSE)
   }  
-
 
           
 # processo de inserção de novas tabelas no esquema 
@@ -96,10 +93,11 @@ PRIMARY KEY (INFANT_ID)
 executeSql(connection, create_table_infant_sql) 
 
 inserting_data <- " 
-INSERT INTO INFANT_TABLE VALUES(
-1,1,'2014/05/01',1,1,1,1,1
-)
-
+COPY person 
+FROM 'person' 
+CSV 
+IGNOREHEADER 1 
+NULL as 'NULL';  
 "
 
 executeSql(connection, inserting_data)
