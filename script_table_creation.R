@@ -1,5 +1,4 @@
 # instalação de bibliotecas 
-
 library(DatabaseConnector)
 library(Eunomia)
 library(stringr)

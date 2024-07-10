@@ -1,7 +1,6 @@
 library(dplyr)
 library(readr)
 
-
 # sQL query
 
 get_column_info <- function(table_name) {
@@ -21,9 +20,15 @@ get_column_info <- function(table_name) {
 
 # getting all collumns
 
-all_columns <- bind_rows(lapply(tabelas, get_column_info))
+all_columns <- bind_rows(lapply(tabelas, get_column_info)) 
+
+
 
 # Saving 
-write_csv(all_columns, "CDM/CIDACS_PHDC_CDM.csv")
+write_csv(all_columns, "NEW_CDM/CIDACS_PHDC_CDM.csv")
 
-paste 
+# New approach
+
+CDM <- read.csv('CDM_5.4/CDMV5.0.csv')
+dados_combinados <- rbind(cdm, informacoes_da_tabela)
+
