@@ -5,6 +5,8 @@ library(Eunomia)
 library(stringr)
 
 
+setwd(getwd())
+
 # estabelecimento das conexões 
 connectionDetails <- getEunomiaConnectionDetails()
 connection <- connect(connectionDetails) 
@@ -20,7 +22,7 @@ for (i in tabelas){
   table <- i 
   s <- 'DELETE FROM ${table}' 
   w <- 'SELECT * FROM ${table}' 
-  saving <- "C:/Users/danilo.dias/Documents/OMOP_ESTUDOS/csv/${table}.csv"
+  saving <- "csv/${table}.csv"
   
   executeSql(connection, str_interp(s, list(table=i))) 
   
@@ -113,8 +115,8 @@ pregnancy_table <- querySql(connection, 'SELECT * FROM PREGNANCY_TABLE')
 
 # salvar o csv após inserção
 
-write.csv(infant_table, "C:/Users/danilo.dias/Documents/OMOP_ESTUDOS/csv/infant_table.csv", row.names=FALSE)
-write.csv(pregnancy_table, "C:/Users/danilo.dias/Documents/OMOP_ESTUDOS/csv/pregancy_table.csv", row.names=FALSE)
+write.csv(infant_table, "csv/infant_table.csv", row.names=FALSE)
+write.csv(pregnancy_table, "csv/pregancy_table.csv", row.names=FALSE)
 
 
 # verificando a nova quantidade de tabelas 
