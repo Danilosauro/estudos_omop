@@ -25,3 +25,5 @@ all_columns <- bind_rows(lapply(tabelas, get_column_info))
 
 # Saving 
 write_csv(all_columns, "CDM/CIDACS_PHDC_CDM.csv")
+
+paste 

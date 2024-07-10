@@ -87,13 +87,14 @@ insertTable(connection = connection,
             tempTable = FALSE) 
 
 
-write.csv(care_site, 'csv/care_site.csv', row.names=False) 
-write.csv(condition_occurrence, 'csv/condition_occurrence.csv', row.names=False) 
-write.csv(location, 'csv/location.csv', row.names=False) 
-write.csv(measurement, 'csv/measurement.csv', row.names=False) 
-write.csv(observation_period, 'csv/observation_period.csv', row.names=False) 
-write.csv(observation, 'csv/observation.csv', row.names=False) 
-write.csv(procedure_occurrence, 'csv/procedure_occurence.csv', row.names =FALSE)
+write.csv(care_site, 'csv/care_site.csv', row.names=FALSE) 
+write.csv(condition_occurrence, 'csv/condition_occurrence.csv', row.names=FALSE) 
+write.csv(location, 'csv/location.csv', row.names=FALSE) 
+write.csv(measurement, 'csv/measurement.csv', row.names=FALSE) 
+write.csv(observation_period, 'csv/observation_period.csv', row.names=FALSE) 
+write.csv(observation, 'csv/observation.csv', row.names=FALSE) 
+write.csv(procedure_occurrence, 'csv/procedure_occurence.csv', row.names =FALSE) 
+write.csv(visit_occurrence,'csv/visit_occurrence.csv', row.names=FALSE)
 
 
 

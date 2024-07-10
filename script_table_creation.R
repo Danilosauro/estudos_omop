@@ -94,30 +94,18 @@ PRIMARY KEY (INFANT_ID)
 
 executeSql(connection, create_table_infant_sql) 
 
-inserting_data <- " 
-COPY person 
-FROM 'person' 
-CSV 
-IGNOREHEADER 1 
-NULL as 'NULL';  
-"
-
-executeSql(connection, inserting_data)
-
 
 # Verificar se a tabela foi criada e os dados falsos inseridos regularmente 
 
 infant_table <- querySql(connection, 'SELECT * FROM INFANT_TABLE') 
-
-infant_table
-
-pregnancy_table <- querySql(connection, 'SELECT * FROM PREGNANCY_TABLE') 
-
-# salvar o csv após inserção
+infant_table 
 
 write.csv(infant_table, "csv/infant_table.csv", row.names=FALSE)
-write.csv(pregnancy_table, "csv/pregancy_table.csv", row.names=FALSE)
 
+pregnancy_table <- querySql(connection, 'SELECT * FROM PREGNANCY_TABLE') 
+pregnancy_table 
+
+write.csv(pregnancy_table, "csv/pregnancy_table.csv", row.names=FALSE)
 
 # verificando a nova quantidade de tabelas 
 
@@ -130,7 +118,5 @@ length(tabelas)
 disconnect(connection) 
 closeAllConnections()
 
-?Eunomia
-?DatabaseConnector 
 
 
