@@ -1,17 +1,16 @@
-# insrting previously mapped data into the omop tables -- SINASC --  
-
+# inserting previously mapped data into the OMOP tables -- SINASC --  
 
 # getting mapped tables
 
-care_site <- read.csv('data/care_site.csv') 
-condition_occurrence <- read.csv('data/condition_occurrence.csv')
-location <- read.csv('data/location.csv') 
-measurement <- read.csv('data/measurement.csv') 
-observation_period <- read.csv('data/observation_period.csv') 
-observation <- read.csv('data/observation.csv')
-person <- read.csv('data/person.csv') 
-procedure_occurrence <- read.csv('data/procedure_occurrence.csv')
-visit_occurrence <- read.csv('data/visit_occurrence.csv') 
+care_site <- read.csv('MOCK_DATA/care_site.csv') 
+condition_occurrence <- read.csv('MOCK_DATA/condition_occurrence.csv')
+location <- read.csv('MOCK_DATA/location.csv') 
+measurement <- read.csv('MOCK_DATA/measurement.csv') 
+observation_period <- read.csv('MOCK_DATA/observation_period.csv') 
+observation <- read.csv('MOCK_DATA/observation.csv')
+person <- read.csv('MOCK_DATA/person.csv') 
+procedure_occurrence <- read.csv('MOCK_DATA/procedure_occurrence.csv')
+visit_occurrence <- read.csv('MOCK_DATA/visit_occurrence.csv') 
 
 
 insertTable(connection = connection, 
@@ -87,14 +86,14 @@ insertTable(connection = connection,
             tempTable = FALSE) 
 
 
-write.csv(care_site, 'csv/care_site.csv', row.names=FALSE) 
-write.csv(condition_occurrence, 'csv/condition_occurrence.csv', row.names=FALSE) 
-write.csv(location, 'csv/location.csv', row.names=FALSE) 
-write.csv(measurement, 'csv/measurement.csv', row.names=FALSE) 
-write.csv(observation_period, 'csv/observation_period.csv', row.names=FALSE) 
-write.csv(observation, 'csv/observation.csv', row.names=FALSE) 
-write.csv(procedure_occurrence, 'csv/procedure_occurence.csv', row.names =FALSE) 
-write.csv(visit_occurrence,'csv/visit_occurrence.csv', row.names=FALSE)
+write.csv(care_site, 'EUNOMIA_CSV_TABLES/care_site.csv', row.names=FALSE) 
+write.csv(condition_occurrence, 'EUNOMIA_CSV_TABLES/condition_occurrence.csv', row.names=FALSE) 
+write.csv(location, 'EUNOMIA_CSV_TABLES/location.csv', row.names=FALSE) 
+write.csv(measurement, 'EUNOMIA_CSV_TABLES/measurement.csv', row.names=FALSE) 
+write.csv(observation_period, 'EUNOMIA_CSV_TABLES/observation_period.csv', row.names=FALSE) 
+write.csv(observation, 'EUNOMIA_CSV_TABLES/observation.csv', row.names=FALSE) 
+write.csv(procedure_occurrence, 'EUNOMIA_CSV_TABLES/procedure_occurence.csv', row.names =FALSE) 
+write.csv(visit_occurrence,'EUNOMIA_CSV_TABLES/visit_occurrence.csv', row.names=FALSE)
 
 
 

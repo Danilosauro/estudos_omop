@@ -1,21 +1,20 @@
-# instalação de bibliotecas 
+# installing required libraries
 library(DatabaseConnector)
 library(Eunomia)
 library(stringr)
 
-
 setwd(getwd())
 
-# estabelecimento das conexões 
+# stablishing connections
 connectionDetails <- getEunomiaConnectionDetails()
 connection <- connect(connectionDetails) 
 
-# verificando a quantidade inicial de tabelas 
+# getting the amount of tables 
 
 tabelas <- getTableNames(connection, databaseSchema = 'main')
 length(tabelas) 
 
-## limpeza dos dados após adquirir a base do eunomia 
+## cleaning all mock data from eunomia library 
 
 for (i in tabelas){ 
   table <- i 
@@ -31,7 +30,7 @@ for (i in tabelas){
   }  
 
           
-# processo de inserção de novas tabelas no esquema 
+# Here we start the creation of new tables into the schema
 
 # pregnancy status 
 
@@ -94,7 +93,7 @@ PRIMARY KEY (INFANT_ID)
 executeSql(connection, create_table_infant_sql) 
 
 
-# Verificar se a tabela foi criada e os dados falsos inseridos regularmente 
+# getting the fields of the new tables
 
 infant_table <- querySql(connection, 'SELECT * FROM INFANT_TABLE') 
 infant_table 
@@ -106,16 +105,7 @@ pregnancy_table
 
 write.csv(pregnancy_table, "csv/pregnancy_table.csv", row.names=FALSE)
 
-# verificando a nova quantidade de tabelas 
+# getting the new amount of tables
 
 tabelas <- getTableNames(connection, databaseSchema = 'main') 
 length(tabelas)  
-
-# desconectar a conexão 
-
-
-disconnect(connection) 
-closeAllConnections()
-
-
-

@@ -3,7 +3,8 @@
 library(ggplot2) 
 library(RColorBrewer)
 
-# QUERYING DAT
+
+# QUERYING DATa
 person_data_query <- querySql(connection, 'SELECT * FROM PERSON') 
 condition_occurrence_data_query <- querySql(connection, 'SELECT * FROM CONDITION_OCCURRENCE') 
 observation_data_query <- querySql(connection, 'SELECT * FROM OBSERVATION') 
